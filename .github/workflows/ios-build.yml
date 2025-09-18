@@ -22,10 +22,7 @@ jobs:
           brew install xcodegen xcbeautify
 
       - name: Generate Xcode project
-        run: |
-          xcodegen generate
-          # Ensure project format compatibility
-          xcodebuild -project Pokedex.xcodeproj -list
+        run: xcodegen generate
 
       - name: Build (Debug, iPhone 15 Pro)
         run: |

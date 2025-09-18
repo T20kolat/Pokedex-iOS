@@ -3,7 +3,8 @@ options:
   deploymentTarget:
     iOS: 16.0
   createIntermediateGroups: true
-  xcodeVersion: "15.0"
+  xcodeVersion: "14.0"
+  projectFormat: "xcode14"
 packages: {}
 targets:
   Pokedex:
