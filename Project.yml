@@ -1,0 +1,23 @@
+name: Pokedex
+options:
+  deploymentTarget:
+    iOS: 16.0
+  createIntermediateGroups: true
+packages: {}
+targets:
+  Pokedex:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.pokedex
+        INFOPLIST_FILE: Sources/Info.plist
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SWIFT_VERSION: 5.9
+    resources:
+      - path: Resources
+        optional: true
+    preBuildScripts: []
+    postCompileScripts: []
