@@ -31,14 +31,15 @@ struct PokemonListView: View {
 											case .failure(_): Image(systemName: "questionmark.circle").frame(width: 56, height: 56)
 											case .empty: ProgressView().frame(width: 56, height: 56)
 											@unknown default: EmptyView()
+											}
 										}
+										Text(item.name)
+											.font(.headline)
+										Spacer()
+										Text(String(format: "#%03d", item.id))
+											.font(.caption)
+											.foregroundColor(.secondary)
 									}
-									Text(item.name)
-										.font(.headline)
-									Spacer()
-									Text(String(format: "#%03d", item.id))
-										.font(.caption)
-										.foregroundColor(.secondary)
 								}
 								.scaleEffect(appearedIds.contains(item.id) ? 1.0 : 0.95)
 								.opacity(appearedIds.contains(item.id) ? 1.0 : 0.0)
