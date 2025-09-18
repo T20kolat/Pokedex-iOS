@@ -65,7 +65,7 @@ struct PokemonRowView: View {
 		.opacity(appearedIds.contains(item.id) ? 1.0 : 0.0)
 		.onAppear {
 			withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) {
-				appearedIds.insert(item.id)
+				_ = appearedIds.insert(item.id)
 			}
 		}
 	}

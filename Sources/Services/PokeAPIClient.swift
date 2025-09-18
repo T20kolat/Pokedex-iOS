@@ -34,7 +34,7 @@ final class PokeAPIClient {
 		let (speciesData, _) = try await session.data(from: speciesURL)
 		let species = try JSONDecoder().decode(PokemonSpecies.self, from: speciesData)
 
-		let description = species.flavor_text_entries.first(where: { $0.language.name == "en" })?.flavor_text.replacingOccurrences(of: "\n", with: " ").replacingOccurrences(of: "\f", with: " ") ?? ""
+		let description = species.flavor_text_entries.first(where: { $0.language.name == "en" })?.flavor_text.replacingOccurrences(of: "\n", with: " ").replacingOccurrences(of: "\u{0C}", with: " ") ?? ""
 
 		let evoURL = URL(string: species.evolution_chain.url)!
 		let (evoData, _) = try await session.data(from: evoURL)

@@ -93,4 +93,20 @@ struct PokemonDetail: Identifiable, Equatable {
 	let abilities: [String]
 	let hiddenAbility: String?
 	let evolutionChain: [PokemonSummary]
+	
+	static func == (lhs: PokemonDetail, rhs: PokemonDetail) -> Bool {
+		return lhs.id == rhs.id &&
+			   lhs.name == rhs.name &&
+			   lhs.numberText == rhs.numberText &&
+			   lhs.artworkURL == rhs.artworkURL &&
+			   lhs.types == rhs.types &&
+			   lhs.description == rhs.description &&
+			   lhs.heightText == rhs.heightText &&
+			   lhs.weightText == rhs.weightText &&
+			   lhs.stats.count == rhs.stats.count &&
+			   zip(lhs.stats, rhs.stats).allSatisfy { $0.name == $1.name && $0.value == $1.value } &&
+			   lhs.abilities == rhs.abilities &&
+			   lhs.hiddenAbility == rhs.hiddenAbility &&
+			   lhs.evolutionChain == rhs.evolutionChain
+	}
 }
