@@ -22,18 +22,14 @@ jobs:
           brew install xcodegen xcbeautify
 
       - name: Generate Xcode project
-        run: |
-          cd Pokedex
-          xcodegen generate
+        run: xcodegen generate
 
       - name: Build (Debug, iPhone 15 Pro)
         run: |
-          cd Pokedex
           xcodebuild -project Pokedex.xcodeproj -scheme Pokedex -destination 'platform=iOS Simulator,name=iPhone 15 Pro' -configuration Debug build | xcbeautify
         shell: bash
 
       - name: Archive (skip signing)
         run: |
-          cd Pokedex
           xcodebuild -project Pokedex.xcodeproj -scheme Pokedex -destination 'generic/platform=iOS' -configuration Release -archivePath build/Pokedex.xcarchive clean archive CODE_SIGNING_ALLOWED=NO | xcbeautify
         shell: bash
