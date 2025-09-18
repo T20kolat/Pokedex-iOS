@@ -49,8 +49,12 @@ struct PokemonDetailView: View {
 						}
 
 						HStack(alignment: .firstTextBaseline) {
-							Text(detail.name)
-								.font(.largeTitle.bold())
+							VStack(alignment: .leading, spacing: 4) {
+								Text(detail.name)
+									.font(.largeTitle.bold())
+									.foregroundColor(rarityTextColor)
+								RarityBadge(rarity: PokemonRarity.rarity(for: detail.id))
+							}
 							Spacer()
 							Text(detail.numberText)
 								.font(.title3.monospacedDigit())
@@ -135,6 +139,19 @@ struct PokemonDetailView: View {
 			await vm.load()
 			withAnimation(.spring(response: 0.6, dampingFraction: 0.85)) { showHeader = true }
 			withAnimation(.easeOut(duration: 0.5).delay(0.05)) { showContent = true }
+		}
+	}
+	
+	private var rarityTextColor: Color {
+		guard let detail = vm.detail else { return .primary }
+		let rarity = PokemonRarity.rarity(for: detail.id)
+		switch rarity {
+		case .common: return .primary
+		case .uncommon: return .green
+		case .rare: return .blue
+		case .epic: return .purple
+		case .legendary: return .orange
+		case .mythical: return .pink
 		}
 	}
 }

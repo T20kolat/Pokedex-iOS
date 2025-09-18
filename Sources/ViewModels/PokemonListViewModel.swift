@@ -23,7 +23,7 @@ final class PokemonListViewModel: ObservableObject {
 		guard all.isEmpty else { return }
 		isLoading = true
 		do {
-			all = try await PokeAPIClient.shared.fetchPokemonList(limit: 151)
+			all = try await PokeAPIClient.shared.fetchPokemonList(limit: 1008) // All Pokémon through Gen 9
 			filtered = all
 			isLoading = false
 		} catch {
